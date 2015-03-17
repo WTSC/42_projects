@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef W3D_H
+# define PI 3.14159265358979323846
 # define W3D_H
 # define WIDTH 320
 # define HEIGHT 200
@@ -32,7 +33,7 @@ typedef struct	s_coor
 {
 	int			x;
 	int			y;
-	double		a;
+	double			a;
 }				t_coor;
 
 typedef struct	s_w3d
@@ -50,14 +51,23 @@ typedef struct	s_w3d
 	int			height;
 	double		ray;
 	short		slice;
+	int		color;
+	int		change;
 }				t_w3d;
 
+void w3d_raycaster(t_w3d **w3d, short int type);
+int 			expose_hook(t_w3d *w3d);
+int			 key_hook(int keycode, t_w3d *w3d);
+int 			loop_hook(t_w3d *w3d);
+void			w3d_draw_ceil(t_w3d *w3d, short int n);
+void 			w3d_draw_floor(t_w3d *w3d, short int n);
 void			w3d_draw_slice(t_w3d *w3d, short int n);
-unsigned int	w3d_calc(unsigned h, unsigned v, short type, t_w3d **w3d);
+unsigned int	w3d_calc(double h, double v, short type, t_w3d **w3d, int n);
 double			to_rad(double deg);
 double			to_deg(double rad);
-unsigned int	w3d_cast_vertical(t_w3d *w3d);
-unsigned int	w3d_cast_horizontal(t_w3d *w3d);
+
+double			w3d_cast_vertical(t_w3d *w3d);
+double			w3d_cast_horizontal(t_w3d *w3d);
 double			to_rad(double deg);
 int				w3d_get_start(t_w3d **w3d);
 void			w3d_check(char ***map);

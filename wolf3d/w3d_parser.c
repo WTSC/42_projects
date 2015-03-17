@@ -53,7 +53,7 @@ int		w3d_get_start(t_w3d **w3d)
 			{
 				(*w3d)->pos.x = (64 * j) + 32;
 				(*w3d)->pos.y = (64 * i) + 32;
-				(*w3d)->pos.a = to_rad(90);
+				(*w3d)->pos.a = PI / 2;
 				return (1);
 			}
 			j++;
@@ -90,7 +90,7 @@ void     fdf_fill_data(t_file *d, char *file, t_w3d **w3d)
 	d->n = get_lines(file);
     d->line = NULL;
     d->i = 0;
-	(*w3d)->height = d->n;
+	(*w3d)->height = d->n - 1;
 }
 
 char	***ft_nbrsplit(char *file, t_w3d **w3d)

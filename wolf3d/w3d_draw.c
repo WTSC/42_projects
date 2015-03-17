@@ -21,17 +21,39 @@ void ft_pixel(t_w3d **w3d, int color, int x, int y)
 		ft_memcpy(&(*w3d)->data[(x * 4) + (y * (*w3d)->ln)], &color, sizeof(int));
 }
 
+#include <stdio.h>
 void w3d_draw_slice(t_w3d *w3d, short int n)
 {
 	short int y;
-	short int y2;
 
-	y = 100;
-	y = 100 - (w3d->slice / 2);
-	y2 = y;
-	while (y2 != y + w3d->slice)
+	y = (HEIGHT / 2) - 1 - (w3d->slice / 2);
+	while (y != HEIGHT / 2 + w3d->slice / 2 - 1)
 	{
-		ft_pixel(&w3d, 0xFFFFFF, n, y2);
-		y2++;
+		ft_pixel(&w3d, w3d->color, n, y);
+		y++;
+	}
+}
+
+void w3d_draw_ceil(t_w3d *w3d, short int n)
+{
+	short int y;
+
+	y = (HEIGHT / 2) - 1 - (w3d->slice / 2);
+	while (y > 0)
+	{
+		ft_pixel(&w3d, 0xFFFFFF, n, y);
+		y--;
+	}
+}
+
+void w3d_draw_floor(t_w3d *w3d, short int n)
+{
+	short int y;
+
+	y = HEIGHT / 2 + w3d->slice / 2 - 1;
+	while (y < HEIGHT - 1)
+	{
+		ft_pixel(&w3d, 0xFFFFFF, n, y);
+		y++;
 	}
 }

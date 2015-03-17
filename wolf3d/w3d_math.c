@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#define PI 3.141592654
 #include <math.h>
 #include "w3d.h"
 
@@ -24,23 +23,40 @@ double to_deg(double rad)
 	return (rad * (180 / PI));
 }
 
-unsigned int w3d_shortest(unsigned int h_wall, unsigned int v_wall)
+unsigned int w3d_shortest(double h_wall, double v_wall, t_w3d *w3d)
 {
-	if (v_wall < h_wall)
+	if ((v_wall < h_wall && v_wall != 0) || h_wall == 0)
+	{
+		if (w3d->ray > PI / 2 && w3d->ray < (3 * PI) / 2)
+			w3d->color = 0xFF0000;
+		else
+			w3d->color = 0x00FF00;
 		return (v_wall);
+	}
 	else
+	{
+		if (w3d->ray > PI)
+			w3d->color = 0x0000FF;
+		else
+			w3d->color = 0xFFFF00;
 		return (h_wall);
+	}
+	if (v_wall < h_wall)
+		return ((v_wall == 0) ? h_wall : v_wall);
+	else
+		return ((h_wall == 0) ? v_wall : h_wall);
 }
 
 #include <stdio.h>
-unsigned int w3d_calc(unsigned h, unsigned v, short type, t_w3d **w3d)
+unsigned int w3d_calc(double h, double v, short type, t_w3d **w3d, int n)
 {
-	unsigned int s;
+	double s;
+	double s2;
 	
-	printf("well... %d, %d\n", h, v);
-	s = w3d_shortest(h, v);
-	s = s * cos((type == 0) ? 30 : -30);
-	printf("%d\n", s);
-	(*w3d)->slice = ceil((64 / s) * 277);
+	s = w3d_shortest(h, v, *w3d);
+	s2 = (*w3d)->pos.a - (PI / 6) + (WIDTH - 1 - n) * 0.99 * (PI / 3 ) / WIDTH;
+	s = s * cos(s2 - (*w3d)->pos.a);
+
+	(*w3d)->slice = (64 / s) * 277;
 	return (s);
 }
