@@ -37,6 +37,7 @@ void w3d_raycaster(t_w3d **w3d, short int type)
 	double			h_wall;
 	static int			n;
 	int			b;
+	int d;
 
 	if (type == 0)
 	{
@@ -58,9 +59,9 @@ void w3d_raycaster(t_w3d **w3d, short int type)
 		}		
 		h_wall = w3d_cast_horizontal(*w3d);
 		v_wall = w3d_cast_vertical(*w3d);	
-		w3d_calc(h_wall, v_wall, type, &(*w3d), n);
+		d = w3d_calc(h_wall, v_wall, type, &(*w3d), n);
 		w3d_draw_ceil(*w3d, n);
-		w3d_draw_slice(*w3d, n);
+		w3d_draw_slice(*w3d, n, d);
 		w3d_draw_floor(*w3d, n);
 		(*w3d)->ray -= PAD;
 		n++;

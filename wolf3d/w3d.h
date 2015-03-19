@@ -61,7 +61,7 @@ int			 key_hook(int keycode, t_w3d *w3d);
 int 			loop_hook(t_w3d *w3d);
 void			w3d_draw_ceil(t_w3d *w3d, short int n);
 void 			w3d_draw_floor(t_w3d *w3d, short int n);
-void			w3d_draw_slice(t_w3d *w3d, short int n);
+void			w3d_draw_slice(t_w3d *w3d, short int n, int d);
 unsigned int	w3d_calc(double h, double v, short type, t_w3d **w3d, int n);
 double			to_rad(double deg);
 double			to_deg(double rad);

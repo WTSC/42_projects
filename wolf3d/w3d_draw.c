@@ -22,10 +22,10 @@ void ft_pixel(t_w3d **w3d, int color, int x, int y)
 }
 
 #include <stdio.h>
-void w3d_draw_slice(t_w3d *w3d, short int n)
+void w3d_draw_slice(t_w3d *w3d, short int n, int d)
 {
 	short int y;
-
+	(void)d;
 	y = (HEIGHT / 2) - 1 - (w3d->slice / 2);
 	while (y != HEIGHT / 2 + w3d->slice / 2 - 1)
 	{
@@ -41,7 +41,7 @@ void w3d_draw_ceil(t_w3d *w3d, short int n)
 	y = (HEIGHT / 2) - 1 - (w3d->slice / 2);
 	while (y > 0)
 	{
-		ft_pixel(&w3d, 0xFFFFFF, n, y);
+		ft_pixel(&w3d, 0x000000, n, y);
 		y--;
 	}
 }
@@ -53,7 +53,7 @@ void w3d_draw_floor(t_w3d *w3d, short int n)
 	y = HEIGHT / 2 + w3d->slice / 2 - 1;
 	while (y < HEIGHT - 1)
 	{
-		ft_pixel(&w3d, 0xFFFFFF, n, y);
+		ft_pixel(&w3d, 0xCCCCCC, n, y);
 		y++;
 	}
 }
