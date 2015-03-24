@@ -86,7 +86,9 @@ int key_hook(int keycode, t_w3d *w3d)
 int expose_hook(t_w3d *w3d)
 {
 	printf("w3d->pos.a before = %f\n", w3d->pos.a);
+					printf("gauche\n");
 	w3d_raycaster(&w3d, 0);
+					printf("droite\n");
 	w3d_raycaster(&w3d, 1);
 	mlx_put_image_to_window(w3d->mlx, w3d->win, w3d->img, 0, 0);
 	return (0);

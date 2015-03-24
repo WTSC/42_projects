@@ -31,14 +31,25 @@ void 			get_vertical(t_coor *pt, t_coor *grid, t_w3d *w3d)
 
 int		 		vertical_wall(t_w3d *w3d, t_coor *grid, t_coor *pt, double y)
 {
-    pt->y += y;
+	printf("en incrémentant %d de %f on obtient", pt->y, y);
+    pt->y += (w3d->ray > 0 && w3d->ray < PI) ? -y : y;
+	printf(" %d\n", pt->y);
     pt->x += (w3d->ray > PI / 2 && w3d->ray < (3 * PI) / 2) ? -64 : 64;
     grid->x = floor(pt->x/ 64);
     grid->y = floor(pt->y/ 64);
-    if (w3d->map[grid->y][grid->x][0] == '1' || grid->y < 0 || grid->x < 0
-		|| grid->y >= w3d->height || grid->x >= w3d->width)
+			
+    if (grid->y >= w3d->height || grid->x >= w3d->width || grid->y < 0 || grid->x < 0
+	|| w3d->map[grid->y][grid->x][0] == '1')
+	{
+		pt->y = (pt->y >= (w3d->height * 64) - 1) ? (w3d->height * 64) - 1 : pt->y + 0;
+		pt->x = (pt->x >= (w3d->width * 64) - 1) ? (w3d->width * 64) - 1 : pt->x + 0;
+		pt->y = (pt->y < 0) ? 0 : pt->y + 0;
+		pt->x = (pt->x < 0) ? 0 : pt->x + 0;
+		grid->x = floor(pt->x/ 64);
+    		grid->y = floor(pt->y/ 64);
 		return (1);
-    else
+	}    
+	else
 		return (0);
 }
 
@@ -55,16 +66,18 @@ double 	w3d_cast_vertical(t_w3d *w3d)
 		return (0);
 	if (w3d->map[grid.y][grid.x][0] == '1')
 	{
+		printf("C'EST TA FAUTE\n");
 		return ((unsigned int)(sqrt(pow(w3d->pos.x - pt.x, 2) + pow(w3d->pos.y - pt.y, 2))));
 	}
 	else
 	{
 		y = fabs(64 * tan(w3d->ray));
-		if (pt.y + y < 0 || pt.y + y >= HEIGHT)
+		if (pt.y + y < 0 || pt.y + y >= w3d->height * 64)
 			return (0);
 		while (42)
 			if (vertical_wall(w3d, &grid, &pt, y) == 1)
 				break ;
 	}
+		printf("NON c'est ta faute a TOI! pis les coordonnées du mur sont %d ; %d soit %d ; %d et angle %f\n", pt.x, pt.y, grid.x, grid.y, w3d->ray);
 	return ((unsigned int)(sqrt(pow(w3d->pos.x - pt.x, 2) + pow(w3d->pos.y - pt.y, 2))));
 }

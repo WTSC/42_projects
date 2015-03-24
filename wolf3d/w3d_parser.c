@@ -53,7 +53,7 @@ int		w3d_get_start(t_w3d **w3d)
 			{
 				(*w3d)->pos.x = (64 * j) + 32;
 				(*w3d)->pos.y = (64 * i) + 32;
-				(*w3d)->pos.a = PI / 2;
+				(*w3d)->pos.a = PI;
 				return (1);
 			}
 			j++;

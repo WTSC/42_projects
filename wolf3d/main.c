@@ -48,7 +48,7 @@ void w3d_raycaster(t_w3d **w3d, short int type)
 	b = (*w3d)->pos.a - PI / 6;
 	if (b < 0)
 		b = (2 * PI) + b;
-	while (((*w3d)->ray >= (*w3d)->pos.a && type == 0) || ((*w3d)->ray >= b && type == 1))
+	while (((*w3d)->ray >= (*w3d)->pos.a && type == 0) || ((*w3d)->ray != b && type == 1))
 	{	
 		//printf("type = %d ray = %f pos = %f pos - PI / 6 = %f\n", type, (*w3d)->ray, (*w3d)->pos.a, (*w3d)->pos.a - PI / 6);
 		if ((*w3d)->ray	< 0)
@@ -56,9 +56,11 @@ void w3d_raycaster(t_w3d **w3d, short int type)
 			(*w3d)->ray = (2 * PI) + (*w3d)->ray;
 			if ((*w3d)->ray	<= b)
 				break ;
-		}		
+		}
 		h_wall = w3d_cast_horizontal(*w3d);
-		v_wall = w3d_cast_vertical(*w3d);	
+		v_wall = w3d_cast_vertical(*w3d);
+				if (n == 257)
+			printf("h wall = %f et v_wall = %f\n", h_wall, v_wall);
 		d = w3d_calc(h_wall, v_wall, type, &(*w3d), n);
 		w3d_draw_ceil(*w3d, n);
 		w3d_draw_slice(*w3d, n, d);
@@ -71,7 +73,6 @@ void w3d_raycaster(t_w3d **w3d, short int type)
 			break ;
 		}
 	}
-	printf("type %d n %d\n", type, n); 
 }
 
 void w3d_init(t_w3d w3d)

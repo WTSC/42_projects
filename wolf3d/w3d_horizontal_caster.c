@@ -29,21 +29,30 @@ void 				get_horizontal(t_coor *pt, t_coor *grid, t_w3d *w3d)
 	}
 }
 
+#include <stdio.h>
 int					 horizontal_wall(t_w3d *w3d, t_coor *grid, t_coor *pt, double x)
 {
-	pt->x += x;
+	pt->x += (w3d->ray > 2 * PI && w3d->ray < (3 * PI) / 2) ? -x : x;
 	pt->y += (w3d->ray <= PI) ? -64 : 64;
 	grid->x = floor(pt->x/ 64);
 	grid->y = floor(pt->y/ 64);
-	if (w3d->map[grid->y][grid->x][0] == '1' || grid->y < 0 || grid->x < 0
-		|| grid->y >= w3d->height || grid->x >= w3d->width)
+	if (grid->y >= w3d->height || grid->x >= w3d->width || grid->y < 0 || grid->x < 0
+	|| w3d->map[grid->y][grid->x][0] == '1')
+	{
+		pt->y = (pt->y >= (w3d->height * 64) - 1) ? (w3d->height * 64) - 1 : pt->y + 0;
+		pt->x = (pt->x >= (w3d->width * 64) - 1) ? (w3d->width * 64) - 1 : pt->x + 0;
+		pt->y = (pt->y < 0) ? 0 : pt->y + 0;
+		pt->x = (pt->x < 0) ? 0 : pt->x + 0;
+		grid->x = floor(pt->x/ 64);
+    		grid->y = floor(pt->y/ 64);
 		return (1);
+	}
 	else
 		return (0);
 }
 
 
-#include <stdio.h>
+
 double		w3d_cast_horizontal(t_w3d *w3d)
 {
 	t_coor pt;
@@ -61,8 +70,8 @@ double		w3d_cast_horizontal(t_w3d *w3d)
 	}	
 	else
 	{
-		x = floor(64 / tan(w3d->ray));
-		if (pt.x + x < 0 || pt.x + x >= WIDTH)
+		x = fabs(64 / tan(w3d->ray));
+		if (pt.x + x < 0 || pt.x + x >= w3d->width * 64)
 			return (0);
 		while (42)
 			if (horizontal_wall(w3d, &grid, &pt, x) == 1)
