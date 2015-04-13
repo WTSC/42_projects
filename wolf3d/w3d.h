@@ -19,7 +19,8 @@
 # define TALL 32
 # define ANGLE 60
 # define D 277
-# define PAD 0.00327249235
+# define PAD 0.00327249234
+
 
 typedef struct	s_file
 {
