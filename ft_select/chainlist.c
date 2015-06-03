@@ -23,17 +23,17 @@ t_list *add_end(t_list *l, char *name)
 	new->nxt = NULL;
     if (l == NULL)
 	{
+		new->highlighted = 1;
 		new->deb = new;
 		new->prev = new->end;
 		return (new);
 	}
     else
     {
-		printf("ici\n");
-		new->deb = temp;
+	new->deb = temp;
         while (temp->nxt != NULL)
         {
-			temp->end = new;
+		temp->end = new;
             temp = temp->nxt;
         }
 		new->prev = temp;

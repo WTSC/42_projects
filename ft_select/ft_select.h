@@ -24,8 +24,9 @@
 typedef struct	s_list
 {
 	char			*name;
-	int				selected;
-	int				highlighted;
+	int			tty;
+	int			selected;
+	int			highlighted;
 	struct s_list	*nxt;
 	struct s_list	*prev;
 	struct s_list	*deb;
@@ -35,5 +36,5 @@ typedef struct	s_list
 void print_bar(t_list *l, struct winsize w);
 t_list	*add_end(t_list *l, char *name);
 int		ft_outc(int c);
-int		highlight(char *fleche);
+int		highlight(char *name, int m);
 #endif

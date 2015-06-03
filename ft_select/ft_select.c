@@ -28,12 +28,13 @@ static t_list *fill_list(t_list *l, char **argv)
 static int     ft_select(t_list *l, struct winsize w)
 {
 	char     buffer[3];
+	print_choices(l, w);
 	print_bar(l, w);
 	while (1)
 	{
 		read(0, buffer, 3);
 		if (buffer[0] == 27)
-			highlight("fleeecheeee");
+			highlight("fleeecheeee", 3);
 		else if (ft_strchr(buffer, 4) != NULL)
 		{
 			printf("Ctlr+d, on quitte !\n");
@@ -43,12 +44,30 @@ static int     ft_select(t_list *l, struct winsize w)
 	return (0);
 }
 
-static void go_canonical(struct termios *term)
+void go_canonical()
 {
-	term->c_lflag &= ~(ICANON);
-	term->c_lflag &= ~(ECHO);
+	struct termios *term;
+	term = (struct termios*)malloc(sizeof(struct termios));
+	tcgetattr(0, term);
+	term->c_lflag &= ~(ICANON | ECHO);
 	term->c_cc[VMIN] = 1;
 	term->c_cc[VTIME] = 0;
+	tcsetattr(0, 0, term);
+	tputs(tgetstr("ti", NULL), 1, ft_outc);
+	tputs(tgetstr("vi", NULL), 1, ft_outc);
+}
+
+void	select_close(void)
+{
+	struct termios *term;
+term = (struct termios*)malloc(sizeof(struct termios));
+tcgetattr(0, term);
+term->c_lflag |= (ICANON | ECHO);
+tcsetattr(0, 0, term);
+tputs(tgetstr("cl", NULL), 1, ft_outc);
+tputs(tgetstr("te", NULL), 1, ft_outc);
+tputs(tgetstr("ve", NULL), 1, ft_outc);
+tputs(tgetstr("me", NULL), 1, ft_outc);
 }
 
 int              main(int argc, char **argv, char **env)
@@ -58,30 +77,19 @@ int              main(int argc, char **argv, char **env)
 	struct winsize	w;
 	t_list			*l;
 
-	(void)argc;
 	(void)env;
 	l = NULL;
-    ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-    printf ("lines %d\n", w.ws_row);
-    printf ("columns %d\n", w.ws_col);
-	l = fill_list(l, argv);
-	go_canonical(&term);
-	if (tcsetattr(0, TCSADRAIN, &term) == -1)
+    	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+	if (w.ws_col < 4 || argc < 2)
 		return (-1);
+	l = fill_list(l, argv);
 	if ((name_term = getenv("TERM")) == NULL)
 		return (-1);
 	if (tgetent(NULL, name_term) == ERR)
 		return (-1);
-	if (tcgetattr(0, &term) == -1)
-		return (-1);
+	go_canonical();
 	tputs(tgetstr("cl", NULL), 1, ft_outc);
-	tputs(tgoto(tgetstr("cm", NULL), 0, w.ws_row), 1, ft_outc);
 	ft_select(l, w);
-    if (tcgetattr(0, &term) == -1)
-        return (-1);
-    term.c_lflag = (ICANON | ECHO);
-	if (tcsetattr(0, 0, &term) == -1)
-		return (-1);
-	printf("%s\n", l->name);
+  	select_close();
 	return (0);
 }
