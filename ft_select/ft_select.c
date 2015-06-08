@@ -6,13 +6,13 @@
 /*   By: jantiope <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/27 15:30:51 by jantiope          #+#    #+#             */
-/*   Updated: 2015/06/03 14:33:09 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/06/08 18:04:19 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-static t_list *fill_list(t_list *l, char **argv)
+static t_list	*fill_list(t_list *l, char **argv)
 {
 	int i;
 
@@ -25,28 +25,30 @@ static t_list *fill_list(t_list *l, char **argv)
 	return (l);
 }
 
-static int     ft_select(t_list *l, struct winsize w)
+static int		ft_select(t_list *l)
 {
-	char     buffer[3];
-	print_choices(l, w);
-	print_bar(l, w);
+	char buffer[3];
+
+	print_choices(l);
+	print_bar(l);
 	while (1)
 	{
 		read(0, buffer, 3);
 		if (buffer[0] == 27)
-			highlight("fleeecheeee", 3);
+			move_or_quit(l, buffer[2]);
 		else if (ft_strchr(buffer, 4) != NULL)
-		{
-			printf("Ctlr+d, on quitte !\n");
 			return (0);
-		}
+		else if (buffer[0] == '\n')
+			l = enter_key(l);
+		ft_bzero(buffer, 3);
 	}
 	return (0);
 }
 
-void go_canonical()
+static void		go_canonical(void)
 {
 	struct termios *term;
+
 	term = (struct termios*)malloc(sizeof(struct termios));
 	tcgetattr(0, term);
 	term->c_lflag &= ~(ICANON | ECHO);
@@ -57,20 +59,22 @@ void go_canonical()
 	tputs(tgetstr("vi", NULL), 1, ft_outc);
 }
 
-void	select_close(void)
+void			select_close(t_list *l)
 {
 	struct termios *term;
-term = (struct termios*)malloc(sizeof(struct termios));
-tcgetattr(0, term);
-term->c_lflag |= (ICANON | ECHO);
-tcsetattr(0, 0, term);
-tputs(tgetstr("cl", NULL), 1, ft_outc);
-tputs(tgetstr("te", NULL), 1, ft_outc);
-tputs(tgetstr("ve", NULL), 1, ft_outc);
-tputs(tgetstr("me", NULL), 1, ft_outc);
+
+	term = (struct termios*)malloc(sizeof(struct termios));
+	tcgetattr(0, term);
+	term->c_lflag |= (ICANON | ECHO);
+	tcsetattr(0, 0, term);
+	tputs(tgetstr("cl", NULL), 1, ft_outc);
+	tputs(tgetstr("te", NULL), 1, ft_outc);
+	tputs(tgetstr("ve", NULL), 1, ft_outc);
+	tputs(tgetstr("me", NULL), 1, ft_outc);
+	ft_lprint(l);
 }
 
-int              main(int argc, char **argv, char **env)
+int				main(int argc, char **argv, char **env)
 {
 	char			*name_term;
 	struct termios	term;
@@ -79,7 +83,7 @@ int              main(int argc, char **argv, char **env)
 
 	(void)env;
 	l = NULL;
-    	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 	if (w.ws_col < 4 || argc < 2)
 		return (-1);
 	l = fill_list(l, argv);
@@ -89,7 +93,7 @@ int              main(int argc, char **argv, char **env)
 		return (-1);
 	go_canonical();
 	tputs(tgetstr("cl", NULL), 1, ft_outc);
-	ft_select(l, w);
-  	select_close();
+	ft_select(l);
+	select_close(l);
 	return (0);
 }
