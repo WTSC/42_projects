@@ -6,7 +6,7 @@
 /*   By: jantiope <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 11:49:21 by jantiope          #+#    #+#             */
-/*   Updated: 2015/06/08 18:11:12 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/06/10 14:47:00 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,7 @@ void	print_choices(t_list *l)
 	while (l != NULL)
 	{
 		print = ft_strdup(l->name);
-		format = 0;
-		if (l->highlighted)
-			format += 1;
-		if (l->selected)
-			format += 2;
+		format = ft_format(l->highlighted, l->selected);
 		highlight(ft_truncate(print, 12, w), format);
 		l = l->nxt;
 		free(print);
@@ -68,7 +64,7 @@ void	print_choices(t_list *l)
 		i++;
 		if (i == w.ws_row - 1)
 		{
-			j += 12;
+			j += 15;
 			i = 0;
 		}
 		tputs(tgoto(tgetstr("cm", NULL), j, i), 1, ft_outc);

@@ -6,7 +6,7 @@
 /*   By: jantiope <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 13:13:41 by jantiope          #+#    #+#             */
-/*   Updated: 2015/06/08 18:14:09 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/06/10 12:18:00 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,10 @@ t_list	*lsearch(t_list *l, int value)
 	return (NULL);
 }
 
-t_list	*add_end(t_list *l, char *name)
+t_list	*new_entry(char *name, t_list *l)
 {
-	t_list	*new;
-	t_list	*temp;
-	int		i;
+	t_list *new;
 
-	i = 0;
-	temp = l;
 	new = (t_list *)malloc(sizeof(t_list));
 	new->name = ft_strdup(name);
 	new->highlighted = 0;
@@ -61,8 +57,21 @@ t_list	*add_end(t_list *l, char *name)
 		new->deb = new;
 		new->prev = NULL;
 		new->id = 0;
-		return (new);
 	}
+	return (new);
+}
+
+t_list	*add_end(t_list *l, char *name)
+{
+	t_list	*new;
+	t_list	*temp;
+	int		i;
+
+	i = 0;
+	temp = l;
+	new = new_entry(name, l);
+	if (l == NULL)
+		return (new);
 	else
 	{
 		new->deb = temp;

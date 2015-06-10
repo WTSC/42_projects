@@ -6,7 +6,7 @@
 /*   By: jantiope <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/27 15:30:51 by jantiope          #+#    #+#             */
-/*   Updated: 2015/06/08 18:04:19 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/06/10 14:38:34 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static int		ft_select(t_list *l)
 {
 	char buffer[3];
 
+	buffer[0] = '\0';
 	print_choices(l);
 	print_bar(l);
 	while (1)
@@ -79,10 +80,10 @@ int				main(int argc, char **argv, char **env)
 	char			*name_term;
 	struct termios	term;
 	struct winsize	w;
-	t_list			*l;
 
 	(void)env;
 	l = NULL;
+	signal(SIGWINCH, signal_handler);
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 	if (w.ws_col < 4 || argc < 2)
 		return (-1);
