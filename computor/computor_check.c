@@ -6,51 +6,66 @@
 /*   By: jantiope <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/12 15:55:39 by jantiope          #+#    #+#             */
-/*   Updated: 2015/05/12 20:18:42 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/06/24 15:45:10 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "computor.h"
 
-int		computor_members(char *arg)
+int		*computor_members(char *arg, char sign)
 {
-	int		i;
-	int 	j;
+	int		*m;
 	int		p;
+	int		v;
+	int		i;
 
 	i = 0;
-	j = 0;
-	p = 0;
-	while (arg[i] != '\0')
+	m = (int *)malloc(sizeof(int) * 3);
+	m = ft_memset(m, 0, sizeof(int) * 3);
+	while (arg[i] != sign)
 	{
-		if (arg[i] == '^')
-			p = 1;
-		if ((arg[i] == '+' || arg[i] == '-') && p == 1)
+		v = ft_atoi(&arg[i]);
+		while (ft_isdigit(arg[i]) || arg[i] == '-')
+			i++;
+		p = (arg[i + 1] == '*') ? ft_atoi(&arg[i + 5]) : 0;
+		if (p >= 3)
 		{
-			j++;
-			p = 0;
+			ft_putendl_fd("I can't solve this\npls\nseriously\nI can't", 2);
+			exit (0);
 		}
-		i++;
+		m[p] += v;
+		while (arg[i] != '+' && arg[i] != '-' && arg[i] != sign)
+			i++;
+		i += (arg[i] == sign) ? 0 : 2;
 	}
-	return (j);
+	return (m);
 }
 
-void	ft_identical(char *arg)
+int		*computor_sign(char *arg, int *m)
 {
-	int i;
+	int		n;
+	int		p;
+	int		i;
 
 	i = 0;
-	while (arg[i] != '\0')
+	n = 0;
+	while (arg[i] != '=')
 	{
-		if (ft_strchr("+-*/^.", arg[i]) != NULL
-			&& ft_strchr("+-*/^.", arg[i + 1]) != NULL)
+		while (ft_isdigit(arg[i]))
+			i++;
+		p = (arg[i + 1] == '*') ? ft_atoi(&arg[i + 5]) : 0;
+		if (n)
 		{
-			ft_putendl_fd("Error : Two consecutive signs", 2);
-			prompt_help();
-			exit(0);
+			m[p] *= -1;
+			n = 0;
 		}
-		i++;
+		while (arg[i] != '+' && arg[i] != '-' && arg[i] != '=')
+			i++;
+		if (arg[i] == '-')
+			n = 1;
+		i += (arg[i] == '=') ? 0 : 2;
 	}
+	return (m);
 }
 
 void	ft_really_equa(char *arg)
@@ -71,7 +86,7 @@ void	ft_checkchars(char *arg)
 	i = 0;
 	while (arg[i] != '\0')
 	{
-		if (ft_strchr("0123456789+-*/=^Xx. ", arg[i]) == NULL)
+		if (ft_strchr("0123456789+-*=^Xx ", arg[i]) == NULL)
 		{
 			ft_putendl_fd("Error : Invalid format", 2);
 			prompt_help();
@@ -81,9 +96,8 @@ void	ft_checkchars(char *arg)
 	}
 }
 
-void computor_check(char *arg)
+void	computor_check(char *arg)
 {
 	ft_checkchars(arg);
 	ft_really_equa(arg);
-	ft_identical(arg);
 }

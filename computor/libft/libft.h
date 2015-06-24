@@ -6,7 +6,7 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 16:23:06 by jantiope          #+#    #+#             */
-/*   Updated: 2015/05/12 21:01:01 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/06/24 15:34:37 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void			ft_putwstr(const wchar_t *s);
 uintmax_t		ft_tobase10(char *n, int base);
 char			*ft_base16(uintmax_t n);
 char			*ft_base(uintmax_t n, unsigned int base);
-char            *ft_freedup (char *s1);
+char			*ft_freedup (char *s1);
 char			*ft_strdup (const char *s1);
 size_t			ft_strlen (const char *s);
 char			*ft_strcpy (char *dst, const char *src);

@@ -5,34 +5,43 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jantiope <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/12 15:54:53 by jantiope          #+#    #+#             */
-/*   Updated: 2015/05/12 20:47:49 by jantiope         ###   ########.fr       */
+/*   Created: 2015/06/24 15:22:39 by jantiope          #+#    #+#             */
+/*   Updated: 2015/06/24 15:37:19 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "computor.h"
 
-void prompt_help(void)
+void	prompt_help(void)
 {
 	ft_putendl_fd("HOW TO USE COMPUTOR :", 2);
 	ft_putendl_fd("Syntax : ./computor \"equation\"", 2);
-    ft_putendl_fd("Your equation MUST be a true one and so MUST contain a '='.", 2);
+	ft_putendl_fd("Your equation MUST be valid and MUST contain a '='.", 2);
 	ft_putendl_fd("e.g : ./computor \"25 + 45x + 50x^2 = 0\"", 2);
-    ft_putendl_fd("This program doesen't support 3+ degrees equations", 2);
-    ft_putendl_fd("WARNING : BRACKETS NOT ALLOWED", 2);
+	ft_putendl_fd("This program doesen't support 3+ degrees equations", 2);
+	ft_putendl_fd("WARNING : BRACKETS NOT ALLOWED", 2);
 }
 
-int main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
-	char *arg;
+	int		*left;
+	int		*right;
+	int		i;
 
-	if (argc > 1)
+	if (argc == 2)
 	{
 		computor_check(argv[1]);
-		arg = computor_nospaces(argv[1]);
-		arg = computor_rewrite(arg);
-		computor_solve(arg)
-		ft_putendl(arg);
+		left = computor_members(argv[1], '=');
+		i = id_chr(argv[1], '=') + 2;
+		right = computor_members(&argv[1][i], '\0');
+		left = computor_sign(argv[1], left);
+		right = computor_sign(argv[1], right);
+		left[0] -= right[0];
+		left[1] -= right[1];
+		left[2] -= right[2];
+		computor_solve(left);
+		free(left);
+		free(right);
 	}
 	else
 	{
