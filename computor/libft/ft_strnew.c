@@ -6,7 +6,7 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 14:59:45 by jantiope          #+#    #+#             */
-/*   Updated: 2015/01/21 11:33:05 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:05:20 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-char *ft_strnew(size_t size)
+char	*ft_strnew(size_t size)
 {
 	char *str;
 

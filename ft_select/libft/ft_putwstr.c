@@ -6,7 +6,7 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/25 23:27:59 by jantiope          #+#    #+#             */
-/*   Updated: 2014/12/25 23:28:01 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:30:38 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <wchar.h>
 #include "libft.h"
 
-void ft_putwstr(const wchar_t *s)
+void	ft_putwstr(const wchar_t *s)
 {
 	size_t i;
 

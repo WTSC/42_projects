@@ -6,7 +6,7 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:11:40 by jantiope          #+#    #+#             */
-/*   Updated: 2014/12/15 01:16:18 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:33:50 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-char *ft_strmap(char const *s, char (*f)(char))
+char	*ft_strmap(char const *s, char (*f)(char))
 {
 	size_t	i;
 	char	*map;

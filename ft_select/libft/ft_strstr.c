@@ -6,14 +6,14 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 21:07:52 by jantiope          #+#    #+#             */
-/*   Updated: 2015/01/21 10:20:29 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:04:35 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include "libft.h"
 
-char *ft_strstr(const char *s1, const char *s2)
+char	*ft_strstr(const char *s1, const char *s2)
 {
 	int i;
 	int j;

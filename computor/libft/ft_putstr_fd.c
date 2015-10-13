@@ -6,13 +6,13 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 15:58:02 by jantiope          #+#    #+#             */
-/*   Updated: 2014/11/07 15:58:14 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:30:12 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_putstr_fd(const char *s, int fd)
+void	ft_putstr_fd(const char *s, int fd)
 {
 	size_t i;
 

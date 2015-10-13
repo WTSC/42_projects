@@ -6,13 +6,13 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 15:54:38 by jantiope          #+#    #+#             */
-/*   Updated: 2014/12/15 00:05:13 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:31:31 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void ft_strclr(char *s)
+void	ft_strclr(char *s)
 {
 	size_t i;
 

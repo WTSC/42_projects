@@ -6,16 +6,18 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 23:08:09 by jantiope          #+#    #+#             */
-/*   Updated: 2014/12/15 00:53:31 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/10/08 14:14:06 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int i;
 	int conv;
 	int is_negative;
 
+	if (!str || str[0] == '\0')
+		return (0);
 	i = 0;
 	conv = 0;
 	is_negative = 0;

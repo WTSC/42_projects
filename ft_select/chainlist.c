@@ -6,7 +6,7 @@
 /*   By: jantiope <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 13:13:41 by jantiope          #+#    #+#             */
-/*   Updated: 2015/06/10 12:18:00 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/10/08 17:33:57 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,35 @@ t_list	*lsearch(t_list *l, int value)
 	return (NULL);
 }
 
+t_list	*ldel(t_list *l)
+{
+	t_list	*tmp;
+
+	tmp = l;
+	while (tmp->highlighted != 1)
+		tmp = tmp->nxt;
+	tmp->highlighted = 0;
+	tmp->hidden = 1;
+	tmp->id = -1;
+	while (tmp->nxt != NULL && tmp->nxt->hidden == 1)
+		tmp = tmp->nxt;
+	if (tmp->nxt == NULL)
+	{
+		while (tmp != NULL && tmp->hidden == 1)
+			tmp = tmp->prev;
+		if (tmp == NULL)
+		{
+			select_close(l, 0);
+			exit(0);
+		}
+	}
+	else
+		tmp = tmp->nxt;
+	tmp->highlighted = 1;
+	l = ft_recount(l);
+	return (l);
+}
+
 t_list	*new_entry(char *name, t_list *l)
 {
 	t_list *new;
@@ -49,6 +78,7 @@ t_list	*new_entry(char *name, t_list *l)
 	new = (t_list *)malloc(sizeof(t_list));
 	new->name = ft_strdup(name);
 	new->highlighted = 0;
+	new->hidden = 0;
 	new->selected = 0;
 	new->nxt = NULL;
 	if (l == NULL)

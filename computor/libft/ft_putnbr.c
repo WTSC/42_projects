@@ -6,7 +6,7 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 15:56:41 by jantiope          #+#    #+#             */
-/*   Updated: 2015/01/02 03:13:23 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:29:50 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <sys/types.h>
 #include "libft.h"
 
-void ft_putnbr(intmax_t n)
+void	ft_putnbr(intmax_t n)
 {
 	if (n < 0)
 	{

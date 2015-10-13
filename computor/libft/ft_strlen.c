@@ -6,13 +6,13 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 16:02:53 by jantiope          #+#    #+#             */
-/*   Updated: 2014/11/04 22:57:54 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:33:40 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-size_t ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	int i;
 

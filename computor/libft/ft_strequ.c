@@ -6,13 +6,13 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:30:02 by jantiope          #+#    #+#             */
-/*   Updated: 2014/12/15 00:06:00 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:32:24 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_strequ(char const *s1, char const *s2)
+int	ft_strequ(char const *s1, char const *s2)
 {
 	if (s1 == NULL || s2 == NULL)
 		return (0);

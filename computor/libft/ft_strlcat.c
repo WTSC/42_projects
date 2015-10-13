@@ -6,14 +6,14 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 19:20:03 by jantiope          #+#    #+#             */
-/*   Updated: 2014/11/06 21:39:45 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:33:32 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include "libft.h"
 
-size_t ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t dstsize;
 	size_t srcsize;

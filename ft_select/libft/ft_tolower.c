@@ -6,11 +6,11 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 15:42:56 by jantiope          #+#    #+#             */
-/*   Updated: 2014/11/06 15:50:10 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:03:29 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_tolower(int c)
+int	ft_tolower(int c)
 {
 	if (c >= 65 && c <= 90)
 		c += 32;

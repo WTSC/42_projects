@@ -6,13 +6,13 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 14:57:34 by jantiope          #+#    #+#             */
-/*   Updated: 2014/11/06 14:58:21 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:02:18 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void *ft_memccpy(void *dst, const void *src, int c, size_t n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
 	char			*data;
 	char			*source;

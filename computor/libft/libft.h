@@ -6,7 +6,7 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 16:23:06 by jantiope          #+#    #+#             */
-/*   Updated: 2015/06/24 15:34:37 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/05/20 15:11:42 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <inttypes.h>
 # include <sys/types.h>
 
-char			**ft_arradd(char **a1, char *a2);
-int				ft_chrcount(const char *s, char c);
 void			ft_putarray(char **array, char s);
 char			**ft_arrcat(char **arr1, const char **arr2);
 char			**ft_arrcpy(char **dst, const char **src);

@@ -6,7 +6,7 @@
 /*   By: jantiope <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/12 15:55:39 by jantiope          #+#    #+#             */
-/*   Updated: 2015/06/24 15:45:10 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/10/08 17:21:31 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		*computor_members(char *arg, char sign)
 		if (p >= 3)
 		{
 			ft_putendl_fd("I can't solve this\npls\nseriously\nI can't", 2);
-			exit (0);
+			exit(0);
 		}
 		m[p] += v;
 		while (arg[i] != '+' && arg[i] != '-' && arg[i] != sign)
@@ -49,7 +49,9 @@ int		*computor_sign(char *arg, int *m)
 
 	i = 0;
 	n = 0;
-	while (arg[i] != '=')
+	if (arg[0] == '-')
+		n = 1;
+	while (arg[i] != '=' && arg[i] != '\0')
 	{
 		while (ft_isdigit(arg[i]))
 			i++;
@@ -63,7 +65,7 @@ int		*computor_sign(char *arg, int *m)
 			i++;
 		if (arg[i] == '-')
 			n = 1;
-		i += (arg[i] == '=') ? 0 : 2;
+		i += (arg[i] == '=' || arg[i] == '\0') ? 0 : 2;
 	}
 	return (m);
 }

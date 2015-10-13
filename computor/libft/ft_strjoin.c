@@ -6,14 +6,14 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 22:18:17 by jantiope          #+#    #+#             */
-/*   Updated: 2015/02/26 17:49:22 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:33:21 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-char *ft_freejoin(char *s1, char *s2, int mode)
+char	*ft_freejoin(char *s1, char *s2, int mode)
 {
 	char *join;
 
@@ -37,7 +37,7 @@ char *ft_freejoin(char *s1, char *s2, int mode)
 	return (join);
 }
 
-char *ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char *join;
 

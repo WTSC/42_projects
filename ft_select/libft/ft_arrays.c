@@ -6,7 +6,7 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/12 01:27:17 by jantiope          #+#    #+#             */
-/*   Updated: 2015/01/12 16:40:13 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:00:45 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include <stdlib.h>
 
-void ft_putarray(char **array, char s)
+void	ft_putarray(char **array, char s)
 {
 	int i;
 
@@ -33,7 +33,7 @@ void ft_putarray(char **array, char s)
 	}
 }
 
-char **ft_arrcat(char **arr1, const char **arr2)
+char	**ft_arrcat(char **arr1, const char **arr2)
 {
 	unsigned int i;
 	unsigned int j;
@@ -50,7 +50,7 @@ char **ft_arrcat(char **arr1, const char **arr2)
 	return (arr1);
 }
 
-char **ft_arrcpy(char **dst, const char **src)
+char	**ft_arrcpy(char **dst, const char **src)
 {
 	unsigned int i;
 
@@ -63,7 +63,7 @@ char **ft_arrcpy(char **dst, const char **src)
 	return (dst);
 }
 
-char **ft_arrdup(char **src)
+char	**ft_arrdup(char **src)
 {
 	char	**dst;
 	int		i;
@@ -79,7 +79,7 @@ char **ft_arrdup(char **src)
 	return (dst);
 }
 
-char **ft_arrjoin(char **dst, char **src)
+char	**ft_arrjoin(char **dst, char **src)
 {
 	char	**join;
 	int		len;

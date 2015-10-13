@@ -6,13 +6,13 @@
 /*   By: jantiope <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/08 17:46:00 by jantiope          #+#    #+#             */
-/*   Updated: 2015/06/08 18:06:27 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/10/08 17:33:04 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-t_list *enter_key(t_list *l)
+t_list	*enter_key(t_list *l)
 {
 	t_list *tmp;
 

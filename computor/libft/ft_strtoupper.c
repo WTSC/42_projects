@@ -6,14 +6,14 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/23 22:39:26 by jantiope          #+#    #+#             */
-/*   Updated: 2014/12/23 23:05:48 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:03:57 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include "libft.h"
 
-char *ft_strtoupper(char *s)
+char	*ft_strtoupper(char *s)
 {
 	int i;
 

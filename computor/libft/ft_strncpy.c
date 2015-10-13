@@ -6,14 +6,14 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 17:06:34 by jantiope          #+#    #+#             */
-/*   Updated: 2015/01/21 10:13:16 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:05:41 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include "libft.h"
 
-char *ft_strncpy(char *dst, const char *src, size_t n)
+char	*ft_strncpy(char *dst, const char *src, size_t n)
 {
 	unsigned int i;
 

@@ -6,7 +6,7 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 16:14:46 by jantiope          #+#    #+#             */
-/*   Updated: 2015/02/26 17:49:06 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:32:12 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include "libft.h"
 
-char *ft_freedup(char *s1)
+char	*ft_freedup(char *s1)
 {
 	char	*copy;
 	int		i;
@@ -39,7 +39,7 @@ char *ft_freedup(char *s1)
 	return (copy);
 }
 
-char *ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
 	char	*copy;
 	int		i;

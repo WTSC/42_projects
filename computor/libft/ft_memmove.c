@@ -6,7 +6,7 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 14:59:01 by jantiope          #+#    #+#             */
-/*   Updated: 2014/11/07 18:23:04 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:28:38 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-void *ft_memmove(void *s1, const void *s2, size_t n)
+void	*ft_memmove(void *s1, const void *s2, size_t n)
 {
 	char			*src;
 

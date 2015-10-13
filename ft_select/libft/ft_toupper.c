@@ -6,11 +6,11 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 15:40:41 by jantiope          #+#    #+#             */
-/*   Updated: 2014/11/06 15:42:25 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:03:21 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_toupper(int c)
+int	ft_toupper(int c)
 {
 	if (c >= 97 && c <= 122)
 		c -= 32;

@@ -6,11 +6,11 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/18 03:14:05 by jantiope          #+#    #+#             */
-/*   Updated: 2014/12/18 03:23:27 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:28:54 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_power(int n, int power)
+int	ft_power(int n, int power)
 {
 	int result;
 

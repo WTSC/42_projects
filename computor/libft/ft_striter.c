@@ -6,13 +6,13 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:00:26 by jantiope          #+#    #+#             */
-/*   Updated: 2014/12/15 00:06:45 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:32:54 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void ft_striter(char *s, void (*f)(char *))
+void	ft_striter(char *s, void (*f)(char *))
 {
 	size_t i;
 

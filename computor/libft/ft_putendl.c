@@ -6,13 +6,13 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 15:56:55 by jantiope          #+#    #+#             */
-/*   Updated: 2014/11/07 15:57:01 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:29:25 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_putendl(const char *s)
+void	ft_putendl(const char *s)
 {
 	size_t i;
 

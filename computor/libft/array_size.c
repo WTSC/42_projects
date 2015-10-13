@@ -6,11 +6,11 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/15 05:30:00 by jantiope          #+#    #+#             */
-/*   Updated: 2014/12/15 05:30:11 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 18:57:43 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int array_size(char **array)
+int	array_size(char **array)
 {
 	int i;
 

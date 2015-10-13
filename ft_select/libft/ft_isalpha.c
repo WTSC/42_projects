@@ -6,11 +6,11 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 15:02:41 by jantiope          #+#    #+#             */
-/*   Updated: 2014/11/06 18:27:57 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:01:08 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isalpha(int c)
+int	ft_isalpha(int c)
 {
 	return ((c >= 65 && c <= 90) || (c >= 97 && c <= 122));
 }

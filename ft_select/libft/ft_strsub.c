@@ -6,7 +6,7 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 22:08:43 by jantiope          #+#    #+#             */
-/*   Updated: 2015/02/03 16:56:08 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:04:21 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-char *ft_freesub(char *s, unsigned int start, size_t len)
+char	*ft_freesub(char *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	size_t	j;
@@ -35,7 +35,7 @@ char *ft_freesub(char *s, unsigned int start, size_t len)
 	return (sub);
 }
 
-char *ft_strsub(char const *s, unsigned int start, size_t len)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	size_t	j;

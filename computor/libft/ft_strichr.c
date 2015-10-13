@@ -6,7 +6,7 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/15 05:55:38 by jantiope          #+#    #+#             */
-/*   Updated: 2014/12/18 04:15:19 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:32:33 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-int id_chr(const char *s, int c)
+int	id_chr(const char *s, int c)
 {
 	int i;
 	int len;

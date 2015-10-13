@@ -6,7 +6,7 @@
 /*   By: jantiope <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/03 11:49:21 by jantiope          #+#    #+#             */
-/*   Updated: 2015/06/10 14:47:00 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/10/08 18:27:04 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 int		ft_outc(int c)
 {
-	write(1, &c, 1);
+	write(2, &c, 1);
 	return (0);
 }
 
-int		highlight(char *name, int m)
+int		highlight(char *name, int m, int h)
 {
+	if (h == 1)
+		return (0);
 	if (m == 2 || m == 3)
 		tputs(tgetstr("us", NULL), 1, ft_outc);
 	if (m == 1 || m == 3)
@@ -29,7 +31,7 @@ int		highlight(char *name, int m)
 	return (1);
 }
 
-char	*ft_truncate(char *s, int m, struct winsize w)
+char	*ft_truncate(char *s, size_t m, struct winsize w)
 {
 	if (m > w.ws_col)
 		m = w.ws_col;
@@ -52,22 +54,22 @@ void	print_choices(t_list *l)
 
 	i = 0;
 	j = 0;
-	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+	ioctl(2, TIOCGWINSZ, &w);
 	while (l != NULL)
 	{
 		print = ft_strdup(l->name);
 		format = ft_format(l->highlighted, l->selected);
-		highlight(ft_truncate(print, 12, w), format);
-		l = l->nxt;
+		highlight(ft_truncate(print, 12, w), format, l->hidden);
 		free(print);
-		print = NULL;
-		i++;
-		if (i == w.ws_row - 1)
+		i += (l->hidden == 1) ? 0 : 1;
+		if (i == w.ws_row - 1 && l->hidden == 0)
 		{
 			j += 15;
 			i = 0;
 		}
-		tputs(tgoto(tgetstr("cm", NULL), j, i), 1, ft_outc);
+		if (l->hidden == 0)
+			tputs(tgoto(tgetstr("cm", NULL), j, i), 1, ft_outc);
+		l = l->nxt;
 	}
 }
 
@@ -78,7 +80,7 @@ void	print_bar(t_list *l)
 	char			*print;
 	t_list			*tmp;
 
-	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+	ioctl(2, TIOCGWINSZ, &w);
 	tmp = l;
 	while (tmp->highlighted != 1)
 		tmp = tmp->nxt;

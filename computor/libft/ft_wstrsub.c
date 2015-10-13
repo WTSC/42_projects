@@ -6,7 +6,7 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 13:47:00 by jantiope          #+#    #+#             */
-/*   Updated: 2014/12/27 13:52:00 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:03:01 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-wchar_t *ft_wstrsub(wchar_t const *s, unsigned int start, size_t len)
+wchar_t	*ft_wstrsub(wchar_t const *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	size_t	j;

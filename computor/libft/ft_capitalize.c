@@ -6,13 +6,13 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/04 21:04:49 by jantiope          #+#    #+#             */
-/*   Updated: 2015/01/04 21:08:18 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 18:58:42 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_capitalize(char *s)
+char	*ft_capitalize(char *s)
 {
 	if (s != NULL)
 		if (ft_isalpha(s[0]) && s[0] >= 97 && s[0] <= 122)

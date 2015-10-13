@@ -6,13 +6,13 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 23:20:17 by jantiope          #+#    #+#             */
-/*   Updated: 2014/11/04 23:36:06 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:28:45 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void *ft_memset(void *b, int c, size_t len)
+void	*ft_memset(void *b, int c, size_t len)
 {
 	unsigned int	i;
 	char			*data;

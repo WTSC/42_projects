@@ -6,14 +6,14 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 14:59:30 by jantiope          #+#    #+#             */
-/*   Updated: 2014/11/07 18:22:07 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:31:57 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-void ft_strdel(char **as)
+void	ft_strdel(char **as)
 {
 	ft_memdel((void **)as);
 }

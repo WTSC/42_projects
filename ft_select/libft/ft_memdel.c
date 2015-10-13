@@ -6,17 +6,17 @@
 /*   By: jantiope <jantiope@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 14:58:35 by jantiope          #+#    #+#             */
-/*   Updated: 2014/12/15 00:04:25 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/09/22 19:28:23 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void ft_memdel(void **ap)
+void	ft_memdel(void **ap)
 {
 	if (ap != NULL && *ap != NULL)
 	{
-		free (*ap);
+		free(*ap);
 		*ap = NULL;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jantiope <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/24 15:22:39 by jantiope          #+#    #+#             */
-/*   Updated: 2015/06/24 15:37:19 by jantiope         ###   ########.fr       */
+/*   Updated: 2015/10/08 16:40:32 by jantiope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int		main(int argc, char **argv)
 		i = id_chr(argv[1], '=') + 2;
 		right = computor_members(&argv[1][i], '\0');
 		left = computor_sign(argv[1], left);
-		right = computor_sign(argv[1], right);
+		right = computor_sign(&argv[1][i], right);
+		printf("left = %d right = %d\n", left[0], right[0]);
 		left[0] -= right[0];
 		left[1] -= right[1];
 		left[2] -= right[2];
