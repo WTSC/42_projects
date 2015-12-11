@@ -1,0 +1,11 @@
+#include "fillit.h"
+
+int main(int ac, char **argv)
+{
+  t_board board;
+
+  if (ac != 2)
+    return (0);
+  fillit_parse(&board, argv);
+  return (0);
+}
