@@ -1,0 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_write_env.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jantiope <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/27 20:49:01 by jantiope          #+#    #+#             */
+/*   Updated: 2017/03/27 21:01:10 by jantiope         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_sh1.h"
+
+char **read_env(void)
+{
+	int fd;
+
+	open("env", O_RDONLY);
+	
+}
+
+void write_env(t_env *env)
+{
+	int fd;
+
+	if (access("env", F_OK) == -1)
+	{
+		if (fd = open("env", O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IROTH) < 0)
+		{
+			perror("open");
+			exit(0);
+		}
+		ft_putarray(env->e, '\n', fd);
+		close(fd);
+	}
+}
